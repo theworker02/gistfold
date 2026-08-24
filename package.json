@@ -1,0 +1,16 @@
+{
+  "name": "gistfold",
+  "version": "0.1.0",
+  "description": "Check that a folder has a README, an example file, and an implementation file.",
+  "bin": {
+    "gistfold": "./src/cli.js"
+  },
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "node --test"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}
