@@ -50,34 +50,66 @@ node src/cli.js --help
 
 ## Quick start
 
-Create a passing folder and inspect the JSON:
+Create a passing folder and inspect the report:
 
 ```bash
-mkdir demo && printf '# Demo\n' > demo/README.md && printf 'module.exports = 1\n' > demo/example.js && printf 'console.log(1)\n' > demo/index.js
+mkdir demo && printf '# Demo\n\ngit clone https://example.com/demo.git\n' > demo/README.md && printf 'module.exports = 1\n' > demo/example.js && printf 'console.log(1)\n' > demo/index.js
 gistfold demo
+gistfold --json demo
 ```
 
-Expected output includes `"status":"OK"` and `"ok":true`. Exit code is 0.
+Human output includes `gistfold: OK`. `--json` includes `"status":"OK"` and `"ok":true`. Exit code is 0.
 
 ## CLI reference
 
-Synopsis:
-
 ```text
-gistfold [options] [dir]
-```
+gistfold 1.00 (1.0.0)
 
-| Flag / argument | Meaning |
-| --- | --- |
-| `-h, --help` | Print detailed usage and exit 0. |
-| `-v, --version` | Print 1.0.0 and exit 0. |
-| `dir` | Directory to scan. Defaults to the current working directory. Only top-level files count. |
+Usage:
+  gistfold [check] [options] [dir]
+  gistfold list [options] [dir]
+
+Confirm a folder is shareable as a gist-style drop:
+  * README.md (case-insensitive, top-level preferred)
+  * a file matching /^example./i  (example.js, EXAMPLE.md, ...)
+  * at least one other implementation file
+
+Subcommands:
+  check              Run the folder lint (default if omitted)
+  list               Print scanned files and any missing requirements
+
+Options:
+  -h, --help         Show this help and exit 0
+  -V, -v, --version  Print 1.0.0 and exit 0
+  --json             Machine-readable JSON object on stdout
+  --recurse          Include nested files (skips node_modules, .git, dist)
+  --strict           Also require a "git clone ..." line in README and
+                     fail if any scanned file contains the token TODO
+  --clone-line       Require a git clone instruction without full --strict
+  --no-todo          Fail when TODO appears in scanned files
+  --missing          With human output, print only the missing list
+
+Arguments:
+  dir                Directory to scan (default: current working directory)
+
+Output:
+  Human report on stdout by default. --json prints one object.
+  Exit 0 on OK, 1 on FAIL or usage errors.
+
+Examples:
+  gistfold
+  gistfold ./my-snippet
+  gistfold check --recurse --strict ./workshop
+  gistfold list --json ./workshop
+```
 
 Print the same text locally:
 
 ```bash
 gistfold --help
+gistfold -h
 gistfold --version
+gistfold -V
 ```
 
 Expected version output:
@@ -88,30 +120,31 @@ Expected version output:
 
 ## Configuration
 
-No configuration file. The check is fixed: README.md (any case), a filename matching /^example\./i, and at least one other regular file as the implementation.
+No configuration file. Use `--recurse` for nested files, `--strict` to require a `git clone` line and fail on TODO.
 
 ## Exit codes
 
 | Code | Meaning |
 | --- | --- |
-| `0` | Folder is OK. JSON status is "OK". |
-| `1` | Folder is missing a required file. JSON status is "FAIL". |
+| `0` | Folder is OK. |
+| `1` | Missing required files, TODO under --strict, or not a directory. |
 
 ## Examples
 
 ### Success path
 
-The folder contains `README.md`, `example.js`, and `index.js`.
+A folder with README.md, example.js, index.js, and a git clone line.
 
 ```bash
 gistfold ./demo
 ```
 
-```json
-{"ok":true,"status":"OK","hasReadme":true,"hasExample":true,"hasImpl":true}
+```text
+gistfold: OK  /abs/demo
+  README.md              ok
+  example.*              ok
+  implementation         ok
 ```
-
-The printed object also includes `dir` (absolute path) and `files` (top-level filenames).
 
 ### Failure path
 
@@ -121,8 +154,12 @@ An empty directory fails every check.
 mkdir empty && gistfold ./empty ; echo exit:$?
 ```
 
-```json
-{"ok":false,"status":"FAIL","hasReadme":false,"hasExample":false,"hasImpl":false}
+```text
+gistfold: FAIL  /abs/empty
+missing:
+  - README.md
+  - example.*
+  - implementation file
 ```
 
 Exit code is 1.

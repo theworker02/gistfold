@@ -42,9 +42,44 @@
     <section id="install">
       <h2>Install</h2>
       <p>Install globally from Git, or run with Node from a clone. There are no extra dependencies.</p>
-      <pre><code>npm install -g git+https://github.com/theworker02/gistfold.git
-gistfold --help
-node src/cli.js --help</code></pre>
+      <pre><code>gistfold 1.00 (1.0.0)
+
+Usage:
+  gistfold [check] [options] [dir]
+  gistfold list [options] [dir]
+
+Confirm a folder is shareable as a gist-style drop:
+  * README.md (case-insensitive, top-level preferred)
+  * a file matching /^example./i  (example.js, EXAMPLE.md, ...)
+  * at least one other implementation file
+
+Subcommands:
+  check              Run the folder lint (default if omitted)
+  list               Print scanned files and any missing requirements
+
+Options:
+  -h, --help         Show this help and exit 0
+  -V, -v, --version  Print 1.0.0 and exit 0
+  --json             Machine-readable JSON object on stdout
+  --recurse          Include nested files (skips node_modules, .git, dist)
+  --strict           Also require a "git clone ..." line in README and
+                     fail if any scanned file contains the token TODO
+  --clone-line       Require a git clone instruction without full --strict
+  --no-todo          Fail when TODO appears in scanned files
+  --missing          With human output, print only the missing list
+
+Arguments:
+  dir                Directory to scan (default: current working directory)
+
+Output:
+  Human report on stdout by default. --json prints one object.
+  Exit 0 on OK, 1 on FAIL or usage errors.
+
+Examples:
+  gistfold
+  gistfold ./my-snippet
+  gistfold check --recurse --strict ./workshop
+  gistfold list --json ./workshop</code></pre>
     </section>
     <section id="usage">
       <h2>Usage</h2>
@@ -79,11 +114,18 @@ Examples:
       <div class="grid-2">
         <div>
           <h3 class="ok">Success</h3>
-          <p>The folder contains <code>README.md</code>, <code>example.js</code>, and <code>index.js</code>.</p><pre><code>gistfold ./demo</code></pre><pre><code>{"ok":true,"status":"OK","hasReadme":true,"hasExample":true,"hasImpl":true}</code></pre><p>The printed object also includes <code>dir</code> (absolute path) and <code>files</code> (top-level filenames).</p>
+          <p>A folder with README.md, example.js, index.js, and a git clone line.</p><pre><code>gistfold ./demo</code></pre><pre><code>gistfold: OK  /abs/demo
+  README.md              ok
+  example.*              ok
+  implementation         ok</code></pre>
         </div>
         <div>
           <h3 class="fail">Failure</h3>
-          <p>An empty directory fails every check.</p><pre><code>mkdir empty &amp;&amp; gistfold ./empty ; echo exit:$?</code></pre><pre><code>{"ok":false,"status":"FAIL","hasReadme":false,"hasExample":false,"hasImpl":false}</code></pre><p>Exit code is 1.</p>
+          <p>An empty directory fails every check.</p><pre><code>mkdir empty &amp;&amp; gistfold ./empty ; echo exit:$?</code></pre><pre><code>gistfold: FAIL  /abs/empty
+missing:
+  - README.md
+  - example.*
+  - implementation file</code></pre><p>Exit code is 1.</p>
         </div>
       </div>
     </section>
