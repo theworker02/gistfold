@@ -3,29 +3,94 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>gistfold 1.00</title>
+  <title>gistfold  · 1.00</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <div class="wrap brand">
-      <img src="logo.svg" alt="gistfold mark">
-      <div>
-        <h1>gistfold</h1>
-        <p class="tag">Gist-shaped folder checks · version 1.00</p>
+  <nav class="nav sans">
+    <a class="brand-lockup" href="index.html"><img src="logo.svg" alt=""> gistfold</a>
+    <div class="links">
+      <a href="index.html#overview">Overview</a>
+      <a href="index.html#install">Install</a>
+      <a href="usage.html">Usage</a>
+      <a href="index.html#examples">Examples</a>
+    </div>
+  </nav>
+  
+  <header class="hero">
+    <img src="logo.svg" alt="gistfold mark">
+    <div>
+      <p class="kicker sans">theworker02 · version 1.00</p>
+      <h1>gistfold</h1>
+      <p class="lede">Confirm a folder is shareable: README.md, an example.* file, and a separate implementation file.</p>
+      <div class="badges sans">
+        <span class="badge">1.00 / 1.0.0</span>
+        <span class="badge">branch main</span>
+        <span class="badge">MIT</span>
+        <span class="badge">Node.js >= 18</span>
       </div>
     </div>
   </header>
-  <main class="wrap">
-    <section class="card">
-      <h2>Purpose</h2>
-      <p>Confirm a directory contains a README, an example file, and a separate implementation file before you share it.</p>
-      <h2>Install</h2>
-      <pre><code>npm install -g gistfold</code></pre>
-      <h2>Usage</h2>
-      <pre><code>gistfold [dir]</code></pre>
+  <div class="wrap">
+    <section id="overview">
+      <h2>Overview</h2>
+      <p>A gist or snippet dump that is missing a README or an example wastes the next reader's time. gistfold is a one-shot folder lint you can run in CI or at the prompt before you publish.</p>
+      <p>Authors of sample folders, workshop materials, and tiny repos who want a mechanical check instead of a visual glance.</p>
     </section>
-    <footer>MIT © 2026 theworker02 · version 1.00 (1.0.0) · navy #0B1F33 · gold #C9A227</footer>
-  </main>
+    <section id="install">
+      <h2>Install</h2>
+      <p>Install globally from Git, or run with Node from a clone. There are no extra dependencies.</p>
+      <pre><code>npm install -g git+https://github.com/theworker02/gistfold.git
+gistfold --help
+node src/cli.js --help</code></pre>
+    </section>
+    <section id="usage">
+      <h2>Usage</h2>
+      <p>Synopsis: <code>gistfold [options] [dir]</code></p>
+      <p>See the <a href="usage.html">full CLI reference</a> for every flag, exit code, and example.</p>
+      <pre><code>gistfold 1.00 (1.0.0)
+
+Usage:
+  gistfold [options] [dir]
+
+Check that a directory looks like a complete gist-style drop:
+  * README.md (case-insensitive)
+  * a file matching /^example./i  (example.js, EXAMPLE.md, ...)
+  * at least one other implementation file
+
+Options:
+  -h, --help       Show this help
+  -v, --version    Print 1.0.0
+
+Arguments:
+  dir              Directory to scan (default: current working directory)
+
+Output:
+  One JSON object on stdout. Exit 0 on OK, 1 on FAIL.
+
+Examples:
+  gistfold
+  gistfold ./my-snippet</code></pre>
+    </section>
+    <section id="examples">
+      <h2>Examples</h2>
+      <div class="grid-2">
+        <div>
+          <h3 class="ok">Success</h3>
+          <p>The folder contains `README.md`, `example.js`, and `index.js`.</p><pre><code>gistfold ./demo</code></pre><pre><code>{"ok":true,"status":"OK","hasReadme":true,"hasExample":true,"hasImpl":true}</code></pre>
+        </div>
+        <div>
+          <h3 class="fail">Failure</h3>
+          <p>An empty directory fails every check.</p><pre><code>mkdir empty &amp;&amp; gistfold ./empty ; echo exit:$?</code></pre><pre><code>{"ok":false,"status":"FAIL","hasReadme":false,"hasExample":false,"hasImpl":false}</code></pre><p>Exit code is 1.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+  <footer class="sans">
+    MIT © 2026 theworker02 · version <strong>1.00</strong> (<code>1.0.0</code>) ·
+    navy <code>#0B1F33</code> · gold <code>#C9A227</code> ·
+    <a href="https://github.com/theworker02/gistfold">GitHub</a> ·
+    <a href="https://thanks.dev/u/gh/theworker02">thanks.dev</a>
+  </footer>
 </body>
 </html>

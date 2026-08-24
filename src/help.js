@@ -1,0 +1,3 @@
+const HELP = "gistfold 1.00 (1.0.0)\n\nUsage:\n  gistfold [options] [dir]\n\nCheck that a directory looks like a complete gist-style drop:\n  * README.md (case-insensitive)\n  * a file matching /^example./i  (example.js, EXAMPLE.md, ...)\n  * at least one other implementation file\n\nOptions:\n  -h, --help       Show this help\n  -v, --version    Print 1.0.0\n\nArguments:\n  dir              Directory to scan (default: current working directory)\n\nOutput:\n  One JSON object on stdout. Exit 0 on OK, 1 on FAIL.\n\nExamples:\n  gistfold\n  gistfold ./my-snippet\n";
+const VERSION = "1.0.0";
+module.exports = { HELP, VERSION };

@@ -1,7 +1,7 @@
 {
   "name": "gistfold",
   "version": "1.0.0",
-  "description": "Check that a folder has a README, an example file, and an implementation file.",
+  "description": "Confirm a folder is shareable: README.md, an example.* file, and a separate implementation file.",
   "bin": {
     "gistfold": "./src/cli.js"
   },
@@ -12,5 +12,26 @@
   "license": "MIT",
   "engines": {
     "node": ">=18"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theworker02/gistfold.git"
+  },
+  "homepage": "https://theworker02.github.io/gistfold/",
+  "bugs": {
+    "url": "https://github.com/theworker02/gistfold/issues"
+  },
+  "files": [
+    "src",
+    "docs",
+    "LICENSE",
+    "README.md"
+  ],
+  "keywords": [
+    "gist",
+    "folder",
+    "readme",
+    "example",
+    "cli"
+  ]
 }
