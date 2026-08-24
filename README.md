@@ -1,6 +1,6 @@
 # gistfold
 
-<img src="docs/logo.svg" alt="gistfold mark" width="88" height="88">
+<img src="docs/logo.svg" alt="gistfold mark" width="96" height="96">
 
 **Confirm a folder is shareable: README.md, an example.* file, and a separate implementation file.**
 
@@ -11,6 +11,8 @@
 ![release 1.00](https://img.shields.io/github/v/release/theworker02/gistfold?display_name=release)
 
 Package version **1.00** (`1.0.0`). Default branch is **`main`** — never `master`.
+
+**Docs:** [GitHub Pages](https://theworker02.github.io/gistfold/) · **Source:** [`theworker02/gistfold`](https://github.com/theworker02/gistfold) · **Release 1.00:** [`v1.0.0`](https://github.com/theworker02/gistfold/releases/tag/v1.0.0)
 
 ## Why it exists
 
@@ -108,6 +110,8 @@ gistfold ./demo
 ```json
 {"ok":true,"status":"OK","hasReadme":true,"hasExample":true,"hasImpl":true}
 ```
+
+The printed object also includes `dir` (absolute path) and `files` (top-level filenames).
 
 ### Failure path
 
