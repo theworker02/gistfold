@@ -14,9 +14,14 @@ This project is **proprietary**. Production use, redistribution, and commercial 
 
 [![JSR](https://jsr.io/badges/@theworker02/gistfold)](https://jsr.io/@theworker02/gistfold)
 ![version 1.1.0](https://img.shields.io/badge/version-1.1.0-C9A227?labelColor=0B1F33)
-![license MIT](https://img.shields.io/badge/license-MIT-0B1F33)
+![license proprietary](https://img.shields.io/badge/license-Proprietary%20(source--available)-0B1F33)
 
-**Package:** [`@theworker02/gistfold`](https://jsr.io/@theworker02/gistfold) Ã‚Â· **Site:** [GitHub Pages](https://theworker02.github.io/gistfold/) Ã‚Â· **Source:** [`theworker02/gistfold`](https://github.com/theworker02/gistfold)
+**Package:** [`@theworker02/gistfold`](https://jsr.io/@theworker02/gistfold)  ·  **Site:** [GitHub Pages](https://theworker02.github.io/gistfold/)  ·  **Source:** [`theworker02/gistfold`](https://github.com/theworker02/gistfold)
+
+## Purpose
+
+Check whether a small folder looks ready to publish as a gist, workshop drop, or example repo: README present, example file, separate implementation file, and optional strict clone/TODO rules.
+
 
 ## Highlights
 
@@ -42,21 +47,13 @@ console.log(hasCloneInstruction("git clone https://github.com/example/repo.git")
 
 ## Public API
 
-- `foldCheck(dir, options)` Ã¢â‚¬â€ validate a folder.
-- `listEntries(dir, options)` Ã¢â‚¬â€ enumerate scanned files.
-- `hasCloneInstruction(text)` Ã¢â‚¬â€ detect clone instructions.
-- `findTodoHits(files)` Ã¢â‚¬â€ locate TODO markers.
-- `formatHuman(result)` Ã¢â‚¬â€ terminal-friendly output.
-- `PACKAGE`, `SKIP_DIRS` Ã¢â‚¬â€ package and scanner metadata.
-- `GistfoldFile`, `FoldOptions`, `FoldResult` Ã¢â‚¬â€ documented TypeScript types.
-
-## CLI from source
-
-```bash
-git clone https://github.com/theworker02/gistfold.git
-cd gistfold
-node src/cli.js --help
-```
+- `foldCheck(dir, options)` — validate a folder.
+- `listEntries(dir, options)` — enumerate scanned files.
+- `hasCloneInstruction(text)` — detect clone instructions.
+- `findTodoHits(files)` — locate TODO markers.
+- `formatHuman(result)` — terminal-friendly output.
+- `PACKAGE`, `SKIP_DIRS` — package and scanner metadata.
+- `GistfoldFile`, `FoldOptions`, `FoldResult` — documented TypeScript types.
 
 ## Development
 
@@ -68,10 +65,41 @@ node --test
 
 The canonical public package is JSR `@theworker02/gistfold`, published through GitHub Actions trusted publishing.
 
+
+
+## CLI examples
+
+Run from a cloned repository (Node 18+):
+
+```bash
+git clone https://github.com/theworker02/gistfold.git
+cd gistfold
+node src/cli.js
+node src/cli.js ./my-snippet
+node src/cli.js check --recurse --strict ./workshop
+node src/cli.js list --json ./workshop
+```
+
+See `node src/cli.js --help` for flags and exit codes.
+
+## Limitations
+
+- Heuristic layout rules (`example.*` naming) may not fit every repo structure.
+- Strict mode is opinionated; disable flags when teaching repos use different conventions.
+- Scans file contents for the substring `TODO`, not structured task trackers.
+
+## Documentation
+
+- [JSR package and generated API docs](https://jsr.io/@theworker02/gistfold)
+- [Project site](https://theworker02.github.io/gistfold/)
+- [Source repository](https://github.com/theworker02/gistfold)
+
 ## License
 
-[MIT](LICENSE) Ã‚Â© 2026 theworker02
+**Source-available proprietary** — evaluation under [LICENSE](./LICENSE); commercial / production use via [COMMERCIAL.md](./COMMERCIAL.md). See [LICENSE_TRANSITION_NOTICE.md](./LICENSE_TRANSITION_NOTICE.md) and [NOTICE](./NOTICE).
+
 
 ## Status
 
 gistfold is actively packaged for commercial licensing and acquisition diligence. See [ACQUISITION.md](./ACQUISITION.md) and [docs/acquisition/](./docs/acquisition/).
+
