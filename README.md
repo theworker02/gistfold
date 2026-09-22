@@ -1,5 +1,13 @@
 # gistfold
 
+
+---
+
+## License & acquisition
+
+This project is **proprietary**. Production use, redistribution, and commercial deployment require a written commercial license or completed acquisition. See [LICENSE](./LICENSE) and [ACQUISITION.md](./ACQUISITION.md). Contact [@theworker02](https://github.com/theworker02).
+
+
 <img src="docs/logo.svg" alt="gistfold mark" width="96" height="96">
 
 **Validate whether a small source folder is complete enough to share as a gist, example, or workshop artifact.**
@@ -8,7 +16,7 @@
 ![version 1.1.0](https://img.shields.io/badge/version-1.1.0-C9A227?labelColor=0B1F33)
 ![license MIT](https://img.shields.io/badge/license-MIT-0B1F33)
 
-**Package:** [`@theworker02/gistfold`](https://jsr.io/@theworker02/gistfold) · **Site:** [GitHub Pages](https://theworker02.github.io/gistfold/) · **Source:** [`theworker02/gistfold`](https://github.com/theworker02/gistfold)
+**Package:** [`@theworker02/gistfold`](https://jsr.io/@theworker02/gistfold) Â· **Site:** [GitHub Pages](https://theworker02.github.io/gistfold/) Â· **Source:** [`theworker02/gistfold`](https://github.com/theworker02/gistfold)
 
 ## Highlights
 
@@ -34,13 +42,13 @@ console.log(hasCloneInstruction("git clone https://github.com/example/repo.git")
 
 ## Public API
 
-- `foldCheck(dir, options)` — validate a folder.
-- `listEntries(dir, options)` — enumerate scanned files.
-- `hasCloneInstruction(text)` — detect clone instructions.
-- `findTodoHits(files)` — locate TODO markers.
-- `formatHuman(result)` — terminal-friendly output.
-- `PACKAGE`, `SKIP_DIRS` — package and scanner metadata.
-- `GistfoldFile`, `FoldOptions`, `FoldResult` — documented TypeScript types.
+- `foldCheck(dir, options)` â€” validate a folder.
+- `listEntries(dir, options)` â€” enumerate scanned files.
+- `hasCloneInstruction(text)` â€” detect clone instructions.
+- `findTodoHits(files)` â€” locate TODO markers.
+- `formatHuman(result)` â€” terminal-friendly output.
+- `PACKAGE`, `SKIP_DIRS` â€” package and scanner metadata.
+- `GistfoldFile`, `FoldOptions`, `FoldResult` â€” documented TypeScript types.
 
 ## CLI from source
 
@@ -62,4 +70,4 @@ The canonical public package is JSR `@theworker02/gistfold`, published through G
 
 ## License
 
-[MIT](LICENSE) © 2026 theworker02
+[MIT](LICENSE) Â© 2026 theworker02
