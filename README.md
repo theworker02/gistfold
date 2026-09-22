@@ -16,7 +16,7 @@ This project is **proprietary**. Production use, redistribution, and commercial 
 ![version 1.1.0](https://img.shields.io/badge/version-1.1.0-C9A227?labelColor=0B1F33)
 ![license MIT](https://img.shields.io/badge/license-MIT-0B1F33)
 
-**Package:** [`@theworker02/gistfold`](https://jsr.io/@theworker02/gistfold) Â· **Site:** [GitHub Pages](https://theworker02.github.io/gistfold/) Â· **Source:** [`theworker02/gistfold`](https://github.com/theworker02/gistfold)
+**Package:** [`@theworker02/gistfold`](https://jsr.io/@theworker02/gistfold) Ã‚Â· **Site:** [GitHub Pages](https://theworker02.github.io/gistfold/) Ã‚Â· **Source:** [`theworker02/gistfold`](https://github.com/theworker02/gistfold)
 
 ## Highlights
 
@@ -42,13 +42,13 @@ console.log(hasCloneInstruction("git clone https://github.com/example/repo.git")
 
 ## Public API
 
-- `foldCheck(dir, options)` â€” validate a folder.
-- `listEntries(dir, options)` â€” enumerate scanned files.
-- `hasCloneInstruction(text)` â€” detect clone instructions.
-- `findTodoHits(files)` â€” locate TODO markers.
-- `formatHuman(result)` â€” terminal-friendly output.
-- `PACKAGE`, `SKIP_DIRS` â€” package and scanner metadata.
-- `GistfoldFile`, `FoldOptions`, `FoldResult` â€” documented TypeScript types.
+- `foldCheck(dir, options)` Ã¢â‚¬â€ validate a folder.
+- `listEntries(dir, options)` Ã¢â‚¬â€ enumerate scanned files.
+- `hasCloneInstruction(text)` Ã¢â‚¬â€ detect clone instructions.
+- `findTodoHits(files)` Ã¢â‚¬â€ locate TODO markers.
+- `formatHuman(result)` Ã¢â‚¬â€ terminal-friendly output.
+- `PACKAGE`, `SKIP_DIRS` Ã¢â‚¬â€ package and scanner metadata.
+- `GistfoldFile`, `FoldOptions`, `FoldResult` Ã¢â‚¬â€ documented TypeScript types.
 
 ## CLI from source
 
@@ -70,4 +70,8 @@ The canonical public package is JSR `@theworker02/gistfold`, published through G
 
 ## License
 
-[MIT](LICENSE) Â© 2026 theworker02
+[MIT](LICENSE) Ã‚Â© 2026 theworker02
+
+## Status
+
+gistfold is actively packaged for commercial licensing and acquisition diligence. See [ACQUISITION.md](./ACQUISITION.md) and [docs/acquisition/](./docs/acquisition/).
